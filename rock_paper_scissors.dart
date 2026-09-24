@@ -103,7 +103,7 @@ String getPlayerName(int playerNumber) {
 String getMove(String playerName) {
   while (true) {
     stdout.write(
-      '$playerName, enter your move (rock/paper/scissors): ';
+      '$playerName, enter your move (rock/paper/scissors): '
     );
 
     String? input = stdin.readLineSync();
@@ -123,7 +123,36 @@ String getMove(String playerName) {
 String? validateMove(String? input) {
   List<String> validMoves = [
     'rock',
-    'paper'
+    'paper',
     'scissors'
   ];
+
+  if (input == null) {
+    return null;
+  }
+String move = input.trim().toLowerCase();
+
+if (validMoves.contains(move)) {
+  return move;
+}
+
+return null;
+}
+
+/// Decides the winner based on two player's moves
+String? decideWinner(String playerOneMove, String playerTwoMove) {
+  if (playerOneMove == playerTwoMove) {
+    return null;
+  }
+
+  if ((playerOneMove == 'rock' &&
+          playerTwoMove == 'scissors') ||
+     (playerOneMove == 'paper' &&
+          playerTwoMove == 'rock') ||
+     (playerOneMove == 'scissors' &&
+          playerTwoMove == 'paper')) {
+    return 'Player 1';
+  } else {
+    return 'Player 2';
+  }
 }
