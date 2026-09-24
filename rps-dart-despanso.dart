@@ -98,3 +98,32 @@ String getPlayerName(int playerNumber) {
 
   return playerName;
 }
+
+/// Get's a player's move and keep asking until a valid move is entered
+String getMove(String playerName) {
+  while (true) {
+    stdout.write(
+      '$playerName, enter your move (rock/paper/scissors): ';
+    );
+
+    String? input = stdin.readLineSync();
+
+    String? validMove = validateMove(input);
+
+    if (validMove != null) {
+      return validMove;
+    }
+
+    print('Invalid move. Please type rock, paper, or scissors.');
+
+  }
+}
+
+/// Checks whether a move is valid and returns it in lowercasee.
+String? validateMove(String? input) {
+  List<String> validMoves = [
+    'rock',
+    'paper'
+    'scissors'
+  ];
+}
