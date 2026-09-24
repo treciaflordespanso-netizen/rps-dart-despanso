@@ -80,3 +80,21 @@ void main() {
     print('Overall winner: It\'s a draw!');
   }
 }
+
+/// Gets a player's name and uses a default name if the input is empty or null.
+String getPlayerName(int playerNumber) {
+  stdout.write('Enter Player $playerNumber name: ');
+
+  String? input = stdin.readLineSync();
+
+  String defaultName = 'Player $playerNumber';
+
+  String playerName = input?.trim() ?? '';
+
+  if (playerName.isEmpty) {
+    print('(No name entered. Using "$defaultName".)');
+    return defaultName;
+  }
+
+  return playerName;
+}
